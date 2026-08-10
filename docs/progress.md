@@ -1,40 +1,52 @@
-# Kubernetes Platform Lab Progress
+# 🛠️ 001 — Tooling & Local Environment
 
-## Overall Status
+> **Status:** 🟢 Ready  
+> **Focus:** Local Docker development environment  
+> **Next Step:** Run my first container
 
-Initializing
+---
 
-## Current Focus
+## 🎯 Goal
 
-Environment and Tooling
+Before getting hands-on with containers, I needed a local environment where I could build, run, and eventually manage containerized applications.
 
-## Lab Areas
+For this lab, I am working from a Windows machine using Docker Desktop and Visual Studio Code.
 
-| Area | Status |
+My goal with the setup was to keep it simple and use the tools I will actually be working with throughout the lab.
+
+---
+
+## 💻 Local Environment
+
+| Component | Tool |
 |---|---|
-| Environment | Learning |
-| Kubernetes Fundamentals | Planned |
-| Workloads | Planned |
-| Networking | Planned |
-| Storage | Planned |
-| Operations | Planned |
-| Helm | Planned |
-| Observability | Planned |
+| Host Operating System | Windows |
+| Code Editor | Visual Studio Code |
+| Container Platform | Docker Desktop |
+| Container CLI | Docker CLI |
+| Primary Terminal | PowerShell |
+| Linux Environment | WSL 2 / Ubuntu |
+| Version Control | Git / GitHub |
 
-## Status Definitions
+---
 
-**Planned** — Not started.
+## 🐳 Docker Desktop
 
-**Learning** — Currently studying the concepts.
+I installed **Docker Desktop for Windows** to provide the local Docker environment for this lab.
 
-**In Lab** — Actively configuring or testing the technology.
+Docker Desktop will be used to:
 
-**Validated** — Hands-on work completed and verified.
+- Build container images
+- Run containers locally
+- Manage images and containers
+- Work with Docker networks and volumes later in the lab
+- Provide the local container environment before moving into Kubernetes
 
-## Current Milestone
+Docker Desktop is also integrated with WSL 2 on my workstation.
 
-Build and validate the initial Kubernetes lab environment.
+### WSL Environment
 
-## Next Milestone
+I verified that my Linux environments are running under WSL 2.
 
-TBD
+```powershell
+wsl -l -v
