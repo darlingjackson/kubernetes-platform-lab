@@ -1,0 +1,114 @@
+# ============================================================
+# 🐳 LAB PULSE
+# KUBERNETES PLATFORM LAB
+# ============================================================
+#
+# Goal:
+# Package my Node.js + Express Lab Pulse application
+# into my own Docker image.
+#
+# I am using an existing Node image as the BASE image,
+# then adding my own application on top of it.
+#
+# ============================================================
+
+
+# ------------------------------------------------------------
+# 1. BASE IMAGE
+# ------------------------------------------------------------
+#
+# Start with the existing Node.js 14 image.
+#
+# This means I do NOT have to manually install:
+#
+# - Linux
+# - Node.js
+# - npm
+#
+# Those are already available in this image.
+FROM node:14
+
+
+# ------------------------------------------------------------
+# 2. WORKING DIRECTORY
+# ------------------------------------------------------------
+#
+# Set /app as the working directory inside the image.
+#
+# Commands that follow will work from this location.
+#
+# Similar idea to:
+#
+# cd /app
+WORKDIR /app
+
+
+# ------------------------------------------------------------
+# 3. COPY APPLICATION FILES
+# ------------------------------------------------------------
+#
+# Copy everything from my current Lab-002 directory
+# into /app inside the Docker image.
+#
+# Local Lab-002 Files
+#        ↓
+# COPY . /app
+#        ↓
+# Image /app Directory
+COPY . /app
+
+
+# ------------------------------------------------------------
+# 4. INSTALL APPLICATION DEPENDENCIES
+# ------------------------------------------------------------
+#
+# npm reads package.json and installs:
+#
+# - Express
+# - body-parser
+#
+# These dependencies become part of my Docker image.
+#
+# IMPORTANT:
+#
+# RUN executes while BUILDING the image.
+RUN npm install
+
+
+# ------------------------------------------------------------
+# 5. DOCUMENT THE APPLICATION PORT
+# ------------------------------------------------------------
+#
+# My Express server listens on port 80 inside the container.
+#
+# EXPOSE documents that expected port.
+#
+# It does NOT automatically publish the port to Windows.
+#
+# I still need:
+#
+# docker run -p 3000:80 lab-pulse
+#
+# HOST PORT : CONTAINER PORT
+#
+#    3000   :       80
+EXPOSE 80
+
+
+# ------------------------------------------------------------
+# 6. CONTAINER STARTUP COMMAND
+# ------------------------------------------------------------
+#
+# When a container starts from this image,
+# run:
+#
+# node server.js
+#
+# Remember:
+#
+# RUN
+#   = executes while building the IMAGE
+#
+# CMD
+#   = executes when starting the CONTAINER
+CMD ["node", "server.js"]

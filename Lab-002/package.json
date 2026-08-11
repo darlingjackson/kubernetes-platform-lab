@@ -1,0 +1,12 @@
+{
+  "name": "lab-pulse",
+  "version": "1.0.0",
+  "description": "A small containerized Node.js and Express application for tracking technical learning wins.",
+  "main": "server.js",
+  "author": "Darling Jackson",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.0"
+  }
+}
